@@ -25,14 +25,81 @@ export default function Detail({ movie }: any) {
         </div>
       </div>
       <div className="w-full flex flex-col gap-4">
-        <h1 className="font-bold text-6xl text-white">{movie.name}</h1>
+        <h1 className="font-bold text-6xl text-white">
+          {movie.name}
+          <span className="ms-4 inline-flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              className="bi bi-star-fill text-yellow-300 me-1"
+              viewBox="0 0 16 16"
+            >
+              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+            </svg>
+            <span className="text-xs text-slate-200">
+              {movie.rating.average ?? "N/A"}
+            </span>
+          </span>
+        </h1>
 
         <table>
-          <tr>
-            <td className="text-white font-semibold w-1/4">Language</td>
-            <td className="text-white font-semibold w-1/4">:</td>
-            <td className="text-white font-semibold w-1/4">{movie.language}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td className="text-white w-1/4">Language</td>
+
+              <td className="text-white font-medium w-full">
+                : {movie.language}
+              </td>
+            </tr>
+            <tr>
+              <td className="text-white w-1/4">Premiered</td>
+
+              <td className="text-white font-medium w-full">
+                : {movie.premiered.split("-").reverse().join("-")}
+              </td>
+            </tr>
+            {movie.ended && (
+              <tr>
+                <td className="text-white w-1/4">Ended</td>
+                <td className="text-white font-medium w-full">
+                  : {movie.ended?.split("-").reverse().join("-")}
+                </td>
+              </tr>
+            )}
+            {movie.schedule.days.length > 0 && movie.schedule.time && (
+              <tr>
+                <td className="text-white w-1/4">Schedule</td>
+
+                <td className="text-white font-medium w-full">
+                  : {movie.schedule.days.map((item: any) => item)} at{" "}
+                  {movie.schedule.time}
+                </td>
+              </tr>
+            )}
+            <tr>
+              <td className="text-white w-1/4">Status</td>
+
+              <td className={`text-white  font-medium w-full`}>
+                :{" "}
+                <span
+                  className={` px-2 rounded-xl pb-1 ${
+                    movie.status === "Ended" ? "bg-red-500" : "bg-green-500"
+                  }`}
+                >
+                  {movie.status}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td className="text-white w-full" colSpan={2}>
+                Summary
+                <br />
+                {movie.summary.replace(/<\/?[^>]+(>|$)/g, "")}
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
