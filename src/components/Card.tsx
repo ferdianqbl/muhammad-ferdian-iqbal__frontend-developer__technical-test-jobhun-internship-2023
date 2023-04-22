@@ -6,6 +6,15 @@ interface CardProps {
 }
 
 export default function Card({ movie }: CardProps) {
+  const colors = [
+    "bg-red-500",
+    "bg-yellow-500",
+    "bg-green-500",
+    "bg-blue-500",
+    "bg-indigo-500",
+    "bg-purple-500",
+    "bg-pink-500",
+  ];
   return (
     <div className="relative rounded-md overflow-hidden card transition duration-500">
       <Link key={movie.show.id} href={`/detail/${movie.show.id}`}>
@@ -26,7 +35,10 @@ export default function Card({ movie }: CardProps) {
               {movie.show.genres.map((genre: string) => (
                 <span
                   key={genre}
-                  className="text-xs text-slate-200 bg-slate-600 px-2 py-1 rounded-md"
+                  className={`
+                  ${colors[Math.floor(Math.random() * colors.length)]} 
+                  text-xs text-slate-200 px-2 py-1 rounded-md
+                  `}
                 >
                   {genre}
                 </span>
