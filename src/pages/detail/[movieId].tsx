@@ -47,41 +47,39 @@ export default function Detail({ movie }: any) {
         <table>
           <tbody>
             <tr>
-              <td className="text-white w-1/4">Language</td>
+              <td className="text-white font-medium w-1/4">Language</td>
 
-              <td className="text-white font-medium w-full">
-                : {movie.language}
-              </td>
+              <td className="text-white w-full">: {movie.language}</td>
             </tr>
             <tr>
-              <td className="text-white w-1/4">Premiered</td>
+              <td className="text-white w-1/4 font-medium">Premiered</td>
 
-              <td className="text-white font-medium w-full">
+              <td className="text-white w-full">
                 : {movie.premiered.split("-").reverse().join("-")}
               </td>
             </tr>
             {movie.ended && (
               <tr>
-                <td className="text-white w-1/4">Ended</td>
-                <td className="text-white font-medium w-full">
+                <td className="text-white w-1/4 font-medium">Ended</td>
+                <td className="text-white w-full">
                   : {movie.ended?.split("-").reverse().join("-")}
                 </td>
               </tr>
             )}
             {movie.schedule.days.length > 0 && movie.schedule.time && (
               <tr>
-                <td className="text-white w-1/4">Schedule</td>
+                <td className="text-white w-1/4 font-medium">Schedule</td>
 
-                <td className="text-white font-medium w-full">
+                <td className="text-white w-full">
                   : {movie.schedule.days.map((item: any) => item)} at{" "}
                   {movie.schedule.time}
                 </td>
               </tr>
             )}
             <tr>
-              <td className="text-white w-1/4">Status</td>
+              <td className="text-white w-1/4 font-medium">Status</td>
 
-              <td className={`text-white  font-medium w-full`}>
+              <td className={`text-white w-full`}>
                 :{" "}
                 <span
                   className={` px-2 rounded-xl pb-1 ${
@@ -93,10 +91,12 @@ export default function Detail({ movie }: any) {
               </td>
             </tr>
             <tr>
-              <td className="text-white w-full" colSpan={2}>
+              <td className="text-white w-full font-medium" colSpan={2}>
                 Summary
                 <br />
-                {movie.summary.replace(/<\/?[^>]+(>|$)/g, "")}
+                <span className="font-normal">
+                  {movie.summary.replace(/<\/?[^>]+(>|$)/g, "")}
+                </span>
               </td>
             </tr>
           </tbody>
