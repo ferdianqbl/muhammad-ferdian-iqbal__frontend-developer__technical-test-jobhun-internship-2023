@@ -80,16 +80,20 @@ export default function Detail({ movie }: any) {
             </span>
           </h1>
 
-          <table>
+          <table className="w-full">
             <tbody>
               <tr>
-                <td className="text-white font-medium w-1/4">Language</td>
+                <td className="text-white font-medium w-1/4 lg:w-2/12">
+                  Language
+                </td>
 
                 <td className="text-white w-full">: {movie.language}</td>
               </tr>
               {movie.premiered && (
                 <tr>
-                  <td className="text-white w-1/4 font-medium">Premiered</td>
+                  <td className="text-white w-1/4 lg:w-2/12 font-medium">
+                    Premiered
+                  </td>
 
                   <td className="text-white w-full">
                     : {movie.premiered.split("-").reverse().join("-")}
@@ -98,7 +102,9 @@ export default function Detail({ movie }: any) {
               )}
               {movie.ended && (
                 <tr>
-                  <td className="text-white w-1/4 font-medium">Ended</td>
+                  <td className="text-white w-1/4 lg:w-2/12 font-medium">
+                    Ended
+                  </td>
                   <td className="text-white w-full">
                     : {movie.ended?.split("-").reverse().join("-")}
                   </td>
@@ -106,7 +112,9 @@ export default function Detail({ movie }: any) {
               )}
               {movie.schedule.days.length > 0 && movie.schedule.time && (
                 <tr>
-                  <td className="text-white w-1/4 font-medium">Schedule</td>
+                  <td className="text-white w-1/4 lg:w-2/12 font-medium">
+                    Schedule
+                  </td>
 
                   <td className="text-white w-full">
                     : {movie.schedule.days.map((item: any) => item)} at{" "}
@@ -115,7 +123,9 @@ export default function Detail({ movie }: any) {
                 </tr>
               )}
               <tr>
-                <td className="text-white w-1/4 font-medium">Status</td>
+                <td className="text-white w-1/4 lg:w-2/12 font-medium">
+                  Status
+                </td>
 
                 <td className={`text-white w-full`}>
                   :{" "}
